@@ -20,25 +20,25 @@ echo "Follow me on twitter! https://twitter.com/nnja"
 # Colorize
 
 # Set the colours you can use
-black=$(tput setaf 0)
-red=$(tput setaf 1)
-green=$(tput setaf 2)
-yellow=$(tput setaf 3)
-blue=$(tput setaf 4)
-magenta=$(tput setaf 5)
-cyan=$(tput setaf 6)
-white=$(tput setaf 7)
+# black=$(tput setaf 0)
+# red=$(tput setaf 1)
+# green=$(tput setaf 2)
+# yellow=$(tput setaf 3)
+# blue=$(tput setaf 4)
+# magenta=$(tput setaf 5)
+# cyan=$(tput setaf 6)
+# white=$(tput setaf 7)
 
-# Resets the style
-reset=`tput sgr0`
+# # Resets the style
+# reset=`tput sgr0`
 
-# Color-echo. Improved. [Thanks @joaocunha]
-# arg $1 = message
-# arg $2 = Color
-cecho() {
-  echo "${2}${1}${reset}"
-  return
-}
+# # Color-echo. Improved. [Thanks @joaocunha]
+# # arg $1 = message
+# # arg $2 = Color
+# cecho() {
+#   echo "${2}${1}${reset}"
+#   return
+# }
 
 echo ""
 cecho "###############################################" $red
@@ -162,25 +162,28 @@ echo "Starting brew app install..."
 
 ### Window Management
 # Todo: Try Divvy and spectacles in the future
-brew cask install sizeup  # window manager
+# brew cask install sizeup  # window manager
 
 # Start SizeUp at login
-defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true
+# defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true
 
 # Don’t show the preferences window on next start
-defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false
+# defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false
 
 
 ### Developer Tools
-brew cask install iterm2
-brew cask install dash
-brew install ispell
+# brew cask install iterm2
+# brew cask install dash
+# brew install ispell
 
 
 ### Development
 brew cask install docker
-brew install postgresql
-brew install redis
+brew install nvm
+echo "source $(brew - prefix nvm)/nvm.sh" >> .bash_profile
+~/.bash_profile
+brew install mongodb
+
 
 
 ### Command line tools - install new ones, update others to latest version
@@ -200,6 +203,8 @@ brew install less
 brew install python
 brew install pyenv
 
+### Go
+brew install go
 
 ### Microcontrollers & Electronics
 brew install avrdude
@@ -210,12 +215,12 @@ brew cask install arduino
 
 ### Dev Editors 
 brew cask install visual-studio-code
-brew cask install pycharm
+# brew cask install pycharm
 ### spacemacs github.com/syl20bnr/spacemacs
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-brew tap d12frosted/emacs-plus
-brew install emacs-plus --HEAD --with-natural-title-bars
-brew linkapps emacs-plus
+# git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+# brew tap d12frosted/emacs-plus
+# brew install emacs-plus --HEAD --with-natural-title-bars
+# brew linkapps emacs-plus
 
 
 ### Writing
@@ -246,8 +251,8 @@ brew cask install flux
 
 
 ### Keyboard & Mouse
-brew cask install karabiner-elements  # remap keys, emacs shortcuts
-brew cask install scroll-reverser  # allow natural scroll for trackpad, not for mouse
+# brew cask install karabiner-elements  # remap keys, emacs shortcuts
+# brew cask install scroll-reverser  # allow natural scroll for trackpad, not for mouse
 
 
 ### Quicklook plugins https://github.com/sindresorhus/quick-look-plugins
@@ -295,29 +300,29 @@ cd ~/Library/Fonts && { curl -O 'https://github.com/Falkor/dotfiles/blob/master/
 ### Installs from Mac App Store
 #############################################
 
-echo "Installing apps from the App Store..."
+# echo "Installing apps from the App Store..."
 
-### find app ids with: mas search "app name"
-brew install mas
+# ### find app ids with: mas search "app name"
+# brew install mas
 
-### Mas login is currently broken on mojave. See:
-### Login manually for now.
+# ### Mas login is currently broken on mojave. See:
+# ### Login manually for now.
 
-cecho "Need to log in to App Store manually to install apps with mas...." $red
-echo "Opening App Store. Please login."
-open "/Applications/App Store.app"
-echo "Is app store login complete.(y/n)? "
-read response
-if [ "$response" != "${response#[Yy]}" ]
-then
-	mas install 907364780  # Tomato One - Pomodoro timer
-	mas install 485812721  # Tweetdeck
-	mas install 668208984  # GIPHY Capture. The GIF Maker (For recording my screen as gif)
-	mas install 1351639930 # Gifski, convert videos to gifs
-	mas install 414030210  # Limechat, IRC app.
-else
-	cecho "App Store login not complete. Skipping installing App Store Apps" $red
-fi
+# cecho "Need to log in to App Store manually to install apps with mas...." $red
+# echo "Opening App Store. Please login."
+# open "/Applications/App Store.app"
+# echo "Is app store login complete.(y/n)? "
+# read response
+# if [ "$response" != "${response#[Yy]}" ]
+# then
+# 	mas install 907364780  # Tomato One - Pomodoro timer
+# 	mas install 485812721  # Tweetdeck
+# 	mas install 668208984  # GIPHY Capture. The GIF Maker (For recording my screen as gif)
+# 	mas install 1351639930 # Gifski, convert videos to gifs
+# 	mas install 414030210  # Limechat, IRC app.
+# else
+# 	cecho "App Store login not complete. Skipping installing App Store Apps" $red
+# fi
 
 
 #############################################
